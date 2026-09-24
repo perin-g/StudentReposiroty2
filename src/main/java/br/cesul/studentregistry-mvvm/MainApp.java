@@ -4,7 +4,7 @@ package br.cesul.studentregistry-mvvm;
  * Hello world!
  *
  */
-public class App 
+public class MainApp
 {
     public static void main( String[] args )
     {
