@@ -1,4 +1,4 @@
-package br.cesul.studentregistry-mvvm;
+package br.cesul.studentregistry;
 
 /**
  * Hello world!

@@ -23,6 +23,9 @@ package br.cesul.studentregistry.model;
 * */
 
 // Import estático para deixar asserts mais legíveis
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /*
@@ -36,5 +39,19 @@ import static org.junit.jupiter.api.Assertions.*;
 * - Evitar muitas verificações num teste só, ou seja, testes que quebram por múltiplas razões
 * */
 public class StudentTest {
-
+    @Test
+    @DisplayName("Construtor padrão inicia id, strings vazias, nota 0.0 e ativo=true")
+    void defaultConstructor_initializeFilds() {
+        // Arrange - não precisa neste caso
+        // Act
+        Student s = new Student();
+        // Assert
+        // 1° parâmetro = É o resultado que obtive após o Act
+        // 2° parâmetro = A mensagem de erro exibida quando este teste falhar
+        assertNotNull(s.getId(), "ID deve ser gerado, nunca NULL");
+        assertEquals("", s.getName(), "Nome deve iniciar como string vazia");
+        assertEquals("", s.getEmail(), "E-mail deve iniciar como string vazia");
+        assertEquals(0.0, s.getGrade(), 0.0001, "Nota deve iniciar exatamente com 0.0");
+        assertTrue(s.isActive(), "Aluno novo deve vir com ativo = true");
+    }
 }
