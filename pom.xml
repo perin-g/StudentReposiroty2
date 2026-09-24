@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>br.cesul.studentregistry-mvvm</groupId>
+  <groupId>br.cesul.studentregistry</groupId>
   <artifactId>StudentReposiroty2</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
@@ -56,7 +56,7 @@
         <artifactId>javafx-maven-plugin</artifactId>
         <version>0.0.8</version>
         <configuration>
-          <mainClass>br.cesul.studentregistry-mvvm.MainApp</mainClass>
+          <mainClass>br.cesul.studentregistry.MainApp</mainClass>
         </configuration>
       </plugin>
       <plugin>
