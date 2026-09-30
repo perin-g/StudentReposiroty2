@@ -40,7 +40,7 @@ import static org.junit.jupiter.api.Assertions.*;
 * */
 public class StudentTest {
     @Test
-    @DisplayName("Construtor padrão inicia id, strings vazias, nota 0.0 e ativo=true")
+    @DisplayName("Construtor padrão inicia ID, strings vazias, nota 0.0 e ativo=true")
     void defaultConstructor_initializeFilds() {
         // Arrange - não precisa neste caso
         // Act
@@ -53,5 +53,31 @@ public class StudentTest {
         assertEquals("", s.getEmail(), "E-mail deve iniciar como string vazia");
         assertEquals(0.0, s.getGrade(), 0.0001, "Nota deve iniciar exatamente com 0.0");
         assertTrue(s.isActive(), "Aluno novo deve vir com ativo = true");
+    }
+
+    @Test
+    @DisplayName("Construtor completo preenche todos os campos (exceto ID)")
+    void fullConstructor_setsFields(){
+        // Arrange
+        String name = "Gabriela";
+        String email = "gabriela@exemplo.com";
+        double grade = 8.5;
+        boolean active = false;
+
+        // Act
+        Student s = new Student(name, email, grade, active);
+
+        // Assert
+        assertNotNull(s.getId());
+        assertEquals(name, s.getName(), "Nome deve refletir o argumento 'name'");
+        assertEquals(email, s.getEmail(), "E-mail deve refletir o argumento 'email'");
+        // Por que colocamos o delta 0.0001 em assertEquals de double?
+        // Em Java (Acredito ser na maioria das linguagens), números com ponto flutuante sofrem imprecisão binária.
+        // Portanto em alguns casos, como por ex.: uma operação que deveria dar 0.3 pode virar 0.30000000004
+        // Neste caso um assertEquals(0.3, valor) pode falhar.
+        // E o JUnit fornece a opção de definir uma tolerância para doubles.
+        // Onde o delta é o orro máximo esperado
+        assertEquals(grade, s.getGrade(), 0.0001,"Grade deve refletir o argumento 'grade'");
+        assertFalse(s.isActive(), "Active deve refletir o argumento 'active', que no teste é falso");
     }
 }
