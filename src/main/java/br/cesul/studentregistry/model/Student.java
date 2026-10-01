@@ -1,5 +1,7 @@
 package br.cesul.studentregistry.model;
 
+import org.bson.conversions.Bson;
+
 import java.util.UUID;
 
 public class Student {
