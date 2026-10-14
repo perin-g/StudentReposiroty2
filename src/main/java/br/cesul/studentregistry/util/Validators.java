@@ -1,19 +1,36 @@
 package br.cesul.studentregistry.util;
 
-/*
-* Final é para indicar que não será herdada, ou seja,
-* é só um conjunto de funções puras
-* */
-public final class Validators {
-    // Denota que esta classe é escrita e não precisa de instâncias
+public class Validators {
+    //denota q esta classe é estatica e nn precisa de instancias
     private Validators(){}
 
-    /*
-    * 1 - Checar null
-    * 2 - Remover espaços das pontas
-    * 3 - Verifico se sobrou algo
-    * */
-    public static boolean notBlank(String s) {
+    public static boolean notBlank(String s){
+        //1- checar null
+        //2- remover espacos das pontas (com o trim())
+        //3- verifico se sobrou algo
         return s != null && !s.trim().isEmpty();
+
     }
+    //validação do email
+    // precisa ter o @
+    // precisa ter . depois do @
+    // o . nao pode ser o ultimo caractere
+    //negacao de notBlank é invalido
+
+    public static boolean email(String s){
+        if(!notBlank(s)) return false;
+
+        // encontrar posicoes de @ e do ultimo ponto
+        int at = s.indexOf("@"); //pega posicao do @ ( se nao tiver, -1)
+        int dot = s.lastIndexOf("."); // posição do ultimo ponto , ou -1
+
+        return at > 0 && dot > at +1 && dot < s.length()-1;
+    }
+
+    public static boolean inRange(double value, double min, double max){
+
+       return value >= min && value <= max;
+        }
+
+
 }
